@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\ParallelTesting;
 use Tests\TestCase;
 
-class UserTest extends TestCase
+class PostTest extends TestCase
 {
     public function setUp(): void
     {
@@ -22,13 +22,13 @@ class UserTest extends TestCase
 
     public function testFactory(): void
     {
-        $user = User::factory()->create();
-        $this->assertInstanceOf(User::class, $user);
+        $post = Post::factory()->create();
+        $this->assertInstanceOf(Post::class, $post);
     }
 
-    public function testHasManyPosts(): void
+    public function testBelongsToUser(): void
     {
-        $user = User::factory()->has(Post::factory())->create();
-        $this->assertInstanceOf(Post::class, $user->posts->first());
+        $post = Post::factory()->create();
+        $this->assertInstanceOf(User::class, $post->user);
     }
 }
