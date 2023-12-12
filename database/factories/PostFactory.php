@@ -21,4 +21,12 @@ class PostFactory extends Factory
             : null,
         ];
     }
+
+    public function published(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'published_at' => fake()
+                ->dateTimeBetween(now()->subDays(7), now()),
+        ]);
+    }
 }
