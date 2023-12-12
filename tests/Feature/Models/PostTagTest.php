@@ -5,21 +5,12 @@ namespace Tests\Feature\Models;
 use App\Models\Post;
 use App\Models\PostTag;
 use App\Models\Tag;
-use Illuminate\Support\Facades\ParallelTesting;
+use Tests\Feature\Models\Traits\InMemoryDatabaseForTesting;
 use Tests\TestCase;
 
 class PostTagTest extends TestCase
 {
-    public function setUp(): void
-    {
-        $this->refreshApplication();
-        ParallelTesting::callSetUpTestCaseCallbacks($this);
-        config()->set('database.default', 'sqlite');
-        config()->set('database.connections.sqlite.database', ':memory:');
-
-        parent::setUp();
-        $this->artisan('migrate');
-    }
+    use InMemoryDatabaseForTesting;
 
     public function testFactory(): void
     {
