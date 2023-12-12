@@ -4,11 +4,10 @@ namespace Tests\Feature\Models;
 
 use App\Models\Post;
 use App\Models\Tag;
-use App\Models\User;
 use Illuminate\Support\Facades\ParallelTesting;
 use Tests\TestCase;
 
-class PostTest extends TestCase
+class TagTest extends TestCase
 {
     public function setUp(): void
     {
@@ -23,19 +22,13 @@ class PostTest extends TestCase
 
     public function testFactory(): void
     {
-        $post = Post::factory()->create();
-        $this->assertInstanceOf(Post::class, $post);
+        $tag = Tag::factory()->create();
+        $this->assertInstanceOf(Tag::class, $tag);
     }
 
-    public function testBelongsToUser(): void
+    public function testBelongsToManyPosts(): void
     {
-        $post = Post::factory()->create();
-        $this->assertInstanceOf(User::class, $post->user);
-    }
-
-    public function testBelongsToManyTags(): void
-    {
-        $post = Post::factory()->has(Tag::factory())->create();
-        $this->assertInstanceOf(Tag::class, $post->tags->first());
+        $tag = Tag::factory()->hasPosts(Post::class)->create();
+        $this->assertInstanceOf(Post::class, $tag->posts->first());
     }
 }
