@@ -1,3 +1,11 @@
+# Eloquent In Memory Testing サンプルコード
+
+このリポジトリは、blog記事 [Eloquent In Memory Testing - Eloquentモデルを速く小さく手軽にテストする](https://no-hack-no.life/post/2023-12-15-eloquent-in-memory-testing/) のサンプルコードです。使い方や動作要件は記事を参照してください。
+
+このLaravelプロジェクトは [laravel/laravel](https://github.com/laravel/laravel) オリジナルではなく、筆者が日常的に利用するカスタマイズを取り入れた独自バージョンより開始されています。基本的な動作はオリジナルと同等ですが、相違点の詳細は [KentarouTakeda/laravel](https://github.com/KentarouTakeda/laravel) または下記のREADMEを確認ください。
+
+---
+
 # Laravel カスタマイズ
 
 ## 追加パッケージ
